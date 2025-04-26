@@ -1,12 +1,24 @@
 package CarpValidador;
 
-public class ValLongitud extends ValPrincipal {
-    public ValLongitud(String password) {
-        super(password);
+public class ValLongitud extends Thread {
+    private String contraseña;
+
+    public ValLongitud(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     @Override
-    public boolean validar() {
-        return password.length() >= 8;
+    public void run() {
+        if (contraseña.length() < 8) {
+            System.out.println("La contraseña debe tener al menos 8 caracteres.");
+        } else {
+            System.out.println("La contraseña tiene la longitud correcta.");
+        }
+    }
+
+    public boolean validar(String contraseña2) {
+        
+        throw new UnsupportedOperationException("Validación no implementada");
     }
 }
+

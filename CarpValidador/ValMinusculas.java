@@ -1,20 +1,27 @@
 package CarpValidador;
 
-import java.util.regex.*;
+public class ValMinusculas extends Thread {
+    private String contraseña;
 
-public class ValMinusculas extends ValPrincipal {
-    public ValMinusculas(String password) {
-        super(password);
+    public ValMinusculas(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     @Override
-    public boolean validar() {
-        Pattern pattern = Pattern.compile("[a-z]");
-        Matcher matcher = pattern.matcher(password);
+    public void run() {
         int count = 0;
-        while (matcher.find()) {
-            count++;
+        for (char c : contraseña.toCharArray()) {
+            if (Character.isLowerCase(c)) count++;
         }
-        return count >= 3;
+        if (count < 3) {
+            System.out.println("Debe tener al menos 3 minusculas.");
+        } else {
+            System.out.println("Tiene suficientes minusculas.");
+        }
+    }
+
+    public boolean validar(String contraseña2) {
+        
+        throw new UnsupportedOperationException("Validación no implementada");
     }
 }

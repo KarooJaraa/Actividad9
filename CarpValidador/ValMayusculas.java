@@ -1,20 +1,27 @@
 package CarpValidador;
 
-import java.util.regex.*;
+public class ValMayusculas extends Thread {
+    private String contraseña;
 
-public class ValMayusculas extends ValPrincipal {
-    public ValMayusculas(String password) {
-        super(password);
+    public ValMayusculas (String contraseña) {
+        this.contraseña = contraseña;
     }
 
     @Override
-    public boolean validar() {
-        Pattern pattern = Pattern.compile("[A-Z]");
-        Matcher matcher = pattern.matcher(password);
+    public void run() {
         int count = 0;
-        while (matcher.find()) {
-            count++;
+        for (char c : contraseña.toCharArray()) {
+            if (Character.isUpperCase(c)) count++;
         }
-        return count >= 2;
+        if (count < 2) {
+            System.out.println("Debe tener al menos 2 mayusculas.");
+        } else {
+            System.out.println("Tiene al menos 2 mayusculas.");
+        }
+    }
+
+    public boolean validar(String contraseña2) {
+        
+        throw new UnsupportedOperationException("Validación no implementada");
     }
 }

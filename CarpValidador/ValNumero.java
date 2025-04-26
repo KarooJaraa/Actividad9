@@ -1,17 +1,23 @@
 package CarpValidador;
 
-import java.util.regex.*;
+public class ValNumero extends Thread {
+    private String contraseña;
 
-public class ValNumero extends ValPrincipal {
-    public ValNumero(String password) {
-        super(password);
+    public ValNumero(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     @Override
-    public boolean validar() {
-        Pattern pattern = Pattern.compile("[0-9]");
-        Matcher matcher = pattern.matcher(password);
-        return matcher.find();
+    public void run() {
+        if (!contraseña.matches(".*\\d.*")) {
+            System.out.println("Debes ponerle al menos un numero.");
+        } else {
+            System.out.println("Tiene al menos un numero.");
+        }
+    }
+
+    public boolean validar(String contraseña2) {
+        
+        throw new UnsupportedOperationException("Validación no implementada");
     }
 }
-
